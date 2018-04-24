@@ -16,7 +16,13 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/authors', [
-    'as' => 'authors', 'uses' => 'AuthorController@getAllAuthors'
+    'as' => 'authors',
+    'uses' => 'AuthorController@getAllAuthors'
+]);
+
+$router->get('/authors/{page}', [
+    'as' => 'authors',
+    'uses' => 'AuthorController@getAllAuthors'
 ]);
 
 $router->get('/add-author', function () use ($router) {
@@ -24,5 +30,6 @@ $router->get('/add-author', function () use ($router) {
 });
 
 $router->get('/books', [
-    'as' => 'books', 'uses' => 'BookController@getAllBooks'
+    'as' => 'books',
+    'uses' => 'BookController@getAllBooks'
 ]);
