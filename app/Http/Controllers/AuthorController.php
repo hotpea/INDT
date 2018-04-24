@@ -13,8 +13,7 @@ class AuthorController extends Controller
 
     public function getAllAuthors()
     {
-        $result = json_decode($this->callAPI('GET', 'https://bibliapp.herokuapp.com/api/authors'), TRUE);
-        return View::make('author/list')->with(['authors' => $result]);
+        return View::make('author/list')->with(['authors' => $this->callAPI('GET', '/authors')]);
     }
 
 }
