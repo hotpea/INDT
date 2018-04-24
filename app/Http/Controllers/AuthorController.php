@@ -36,18 +36,39 @@ class AuthorController extends Controller
 
     public function save(Request $request)
     {
+        $id = $request->input('id');
         $name = $request->input('nome');
         $lastName = $request->input('sobrenome');
 
-        $this->callAPI('POST',
-            '/authors/',
-            array(
-                "firstName" => $name,
-                "lastName" => $lastName
-            )
+        $data = array(
+            "firstName" => $name,
+            "lastName" => $lastName
         );
 
+        if($id) {
+            $this->callAPI('PUT',
+                '/authors/' . $id,
+                $data
+            );
+        } else {
+            $this->callAPI('POST',
+                '/authors/',
+                $data
+            );
+        }
+
         return redirect('/authors/1');
+    }
+
+    public function editAuthor($id)
+    {
+        $author = $this->callAPI('GET', '/authors/' . $id);
+
+        return View::make('author/edit')->with(
+            [
+                'author' => $author
+            ]
+        );
     }
 
 }

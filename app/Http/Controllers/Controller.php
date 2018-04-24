@@ -27,7 +27,19 @@ class Controller extends BaseController
                 }
                 break;
             case "PUT":
-                curl_setopt($curl, CURLOPT_PUT, 1);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+
+                if ($data){
+                    $data = json_encode($data);
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                            'Content-Type: application/json',
+                            'Content-Length: ' . strlen($data))
+                    );
+                }
                 break;
             default:
                 if ($data)

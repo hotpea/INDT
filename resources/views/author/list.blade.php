@@ -25,7 +25,7 @@
                         <a class="btn btn-primary" data-toggle="collapse" href="#collapse{{ $author['id'] }}" role="button" aria-expanded="false" aria-controls="collapse">
                             Livros
                         </a>
-                        <a class="btn btn-default" href="/editauthor/{{ $author['id'] }} ?>">
+                        <a class="btn btn-default" href="/editauthor/{{ $author['id'] }}">
                             Editar Autor
                         </a>
                         <a class="btn btn-danger">

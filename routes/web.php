@@ -30,6 +30,11 @@ $router->post('/saveauthor', [
     'uses' => 'AuthorController@save'
 ]);
 
+$router->get('/editauthor/{id}', [
+    'as' => 'authors',
+    'uses' => 'AuthorController@editAuthor'
+]);
+
 $router->get('/add-author', function () use ($router) {
     return view('author.add');
 });
