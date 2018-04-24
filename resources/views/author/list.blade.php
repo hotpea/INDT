@@ -16,62 +16,69 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($authors as $author) { ?>
+            @foreach($authors as $author)
                 <tr>
-                    <th scope="row"><?php echo $author['id']; ?></th>
-                    <td><?php echo $author['firstName']; ?></td>
-                    <td><?php echo $author['lastName']; ?></td>
+                    <th scope="row">{{ $author['id'] }}</th>
+                    <td>{{ $author['firstName'] }}</td>
+                    <td>{{ $author['lastName'] }}</td>
                     <td>
-                        <a class="btn btn-primary" data-toggle="collapse" href="#collapse<?php echo $author['id']; ?>" role="button" aria-expanded="false" aria-controls="collapse">
+                        <a class="btn btn-primary" data-toggle="collapse" href="#collapse{{ $author['id'] }}" role="button" aria-expanded="false" aria-controls="collapse">
                             Livros
                         </a>
-                        <a class="btn btn-default">
+                        <a class="btn btn-default" href="/editauthor/{{ $author['id'] }} ?>">
                             Editar Autor
+                        </a>
+                        <a class="btn btn-danger">
+                            Excluir Autor
                         </a>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <div class="collapse" id="collapse<?php echo $author['id']; ?>">
+                        <div class="collapse" id="collapse{{ $author['id'] }}">
                             {{--TODO: tabela com dados dos livros do autor--}}
                             <table class="table">
                                 <tbody>
-                                    <?php if(count($author['books']) > 0) { ?>
-                                        <?php foreach($author['books'] as $book) { ?>
+                                    @if (count($author['books']) > 0)
+                                        @foreach($author['books'] as $book)
                                             <tr>
-                                                <th scope="row"><?php echo $book['id']; ?></th>
-                                                <td><?php echo $book['title']; ?></td>
+                                                <th scope="row">{{ $book['id'] }}</th>
+                                                <td>{{ $book['title'] }}</td>
                                             </tr>
-                                        <?php } ?>
-                                    <?php } else { ?>
+                                        @endforeach
+                                    @else
                                         <tr>
                                             <td>Sem livros cadastrados</td>
                                         </tr>
-                                    <?php }  ?>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                     </td>
                 </tr>
-            <?php } ?>
+            @endforeach
         </tbody>
     </table>
     <div class="pull-right">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                </li>
-
-                <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                @if ( ($actual_page - 1) > 0 )
                     <li class="page-item">
-                        <a class="page-link active" href="/authors/<?php echo $i;?>"><?php echo $i;?></a>
+                        <a class="page-link" href="/authors/{{ $actual_page - 1}}">Anterior</a>
                     </li>
-                <?php } ?>
+                @endif
 
-                <li class="page-item">
-                    <a class="page-link" href="#">Próximo</a>
-                </li>
+                @for ($i = 1; $i <= $pages; $i++)
+                    <li class="page-item">
+                        <a class="page-link active" href="/authors/{{ $i }}">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                @if ( ($actual_page + 1) < $pages )
+                    <li class="page-item">
+                        <a class="page-link" href="/authors/{{ $actual_page + 1}}">Próximo</a>
+                    </li>
+                @endif
             </ul>
         </nav>
     </div>
