@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\View;
+
 class AuthorController extends Controller
 {
     public function __construct()
@@ -11,7 +13,8 @@ class AuthorController extends Controller
 
     public function getAllAuthors()
     {
-        return $this->callAPI('GET', 'https://bibliapp.herokuapp.com/api/authors');
+        $result = json_decode($this->callAPI('GET', 'https://bibliapp.herokuapp.com/api/authors'), TRUE);
+        return View::make('author/list')->with(['authors' => $result]);
     }
 
 }
