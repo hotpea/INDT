@@ -19,6 +19,10 @@ $router->get('/authors', [
     'as' => 'authors', 'uses' => 'AuthorController@getAllAuthors'
 ]);
 
+$router->get('/add-author', function () use ($router) {
+    return view('author.add');
+});
+
 $router->get('/books', [
     'as' => 'books', 'uses' => 'BookController@getAllBooks'
 ]);
