@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class AuthorController extends Controller
@@ -31,6 +32,22 @@ class AuthorController extends Controller
                 'actual_page' => $page
             ]
         );
+    }
+
+    public function save(Request $request)
+    {
+        $name = $request->input('nome');
+        $lastName = $request->input('sobrenome');
+
+        $this->callAPI('POST',
+            '/authors/',
+            array(
+                "firstName" => $name,
+                "lastName" => $lastName
+            )
+        );
+
+        return redirect('/authors/1');
     }
 
 }

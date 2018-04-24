@@ -25,6 +25,11 @@ $router->get('/authors/{page}', [
     'uses' => 'AuthorController@getAllAuthors'
 ]);
 
+$router->post('/saveauthor', [
+    'as' => 'authors',
+    'uses' => 'AuthorController@save'
+]);
+
 $router->get('/add-author', function () use ($router) {
     return view('author.add');
 });

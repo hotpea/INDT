@@ -13,10 +13,18 @@ class Controller extends BaseController
         switch ($method)
         {
             case "POST":
-                curl_setopt($curl, CURLOPT_POST, 1);
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 
-                if ($data)
+                if ($data){
+                    $data = json_encode($data);
                     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                            'Content-Type: application/json',
+                            'Content-Length: ' . strlen($data))
+                    );
+                }
                 break;
             case "PUT":
                 curl_setopt($curl, CURLOPT_PUT, 1);
