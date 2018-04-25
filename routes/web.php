@@ -40,11 +40,20 @@ $router->get('/deleteauthor/{id}', [
     'uses' => 'AuthorController@deleteAuthor'
 ]);
 
-$router->get('/add-author', function () use ($router) {
+$router->get('/addauthor', function () use ($router) {
     return view('author.add');
 });
 
 $router->get('/books', [
     'as' => 'books',
     'uses' => 'BookController@getAllBooks'
+]);
+
+$router->get('/addbook/{authorid}', function ($authorid) use ($router) {
+    return view('book.add', ['authorid' => $authorid ]);
+});
+
+$router->post('/savebook', [
+    'as' => 'books',
+    'uses' => 'BookController@save'
 ]);

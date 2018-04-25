@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="pull-right">
-        <a class="btn btn-default" href="/add-author">
+        <a class="btn btn-default" href="/addauthor">
             Novo Autor
         </a>
     </div>
@@ -53,6 +53,11 @@
                                     @endif
                                 </tbody>
                             </table>
+                            <div class="pull-right">
+                                <a class="btn btn-default" href="/addbook/{{ $author['id'] }}">
+                                    Adicionar livro
+                                </a>
+                            </div>
                         </div>
                     </td>
                 </tr>
