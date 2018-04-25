@@ -1,3 +1,6 @@
+Teste feito para a empresa INDT, pata vaga de desenvolvimento de sistemas.
+Feito em PHP, com o framework LUMEN 5.6, Bootstrap 4.0, Jquery e usando API disponibilizada pela INDT.
+
 Requisitos:
 - PHP >= 7.1.3
 - OpenSSL PHP Extension
