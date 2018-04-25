@@ -35,6 +35,11 @@ $router->get('/editauthor/{id}', [
     'uses' => 'AuthorController@editAuthor'
 ]);
 
+$router->get('/deleteauthor/{id}', [
+    'as' => 'authors',
+    'uses' => 'AuthorController@deleteAuthor'
+]);
+
 $router->get('/add-author', function () use ($router) {
     return view('author.add');
 });

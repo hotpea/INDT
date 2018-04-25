@@ -28,7 +28,7 @@
                         <a class="btn btn-default" href="/editauthor/{{ $author['id'] }}">
                             Editar Autor
                         </a>
-                        <a class="btn btn-danger">
+                        <a class="btn btn-danger" href="/deleteauthor/{{ $author['id'] }}">
                             Excluir Autor
                         </a>
                     </td>

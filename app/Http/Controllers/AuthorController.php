@@ -71,4 +71,11 @@ class AuthorController extends Controller
         );
     }
 
+    public function deleteAuthor($id)
+    {
+        $this->callAPI('DELETE', '/authors/' . $id);
+
+        return redirect('/authors/1');
+    }
+
 }
