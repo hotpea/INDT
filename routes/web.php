@@ -15,20 +15,14 @@ $router->get('/', function () use ($router) {
     return view('index', ['name' => 'Jack']);
 });
 
-$router->get('/authors', [
-    'as' => 'authors',
-    'uses' => 'AuthorController@getAllAuthors'
-]);
-
+// Author
 $router->get('/authors/{page}', [
     'as' => 'authors',
     'uses' => 'AuthorController@getAllAuthors'
 ]);
-
-$router->post('/saveauthor', [
-    'as' => 'authors',
-    'uses' => 'AuthorController@save'
-]);
+$router->get('/addauthor', function () use ($router) {
+    return view('author.add');
+});
 
 $router->get('/editauthor/{id}', [
     'as' => 'authors',
@@ -40,10 +34,12 @@ $router->get('/deleteauthor/{id}', [
     'uses' => 'AuthorController@deleteAuthor'
 ]);
 
-$router->get('/addauthor', function () use ($router) {
-    return view('author.add');
-});
+$router->post('/saveauthor', [
+    'as' => 'authors',
+    'uses' => 'AuthorController@save'
+]);
 
+// Books
 $router->get('/books', [
     'as' => 'books',
     'uses' => 'BookController@getAllBooks'
@@ -53,12 +49,17 @@ $router->get('/addbook/{authorid}', function ($authorid) use ($router) {
     return view('book.add', ['authorid' => $authorid ]);
 });
 
-$router->post('/savebook', [
+$router->get('/editbook/{id}', [
     'as' => 'books',
-    'uses' => 'BookController@save'
+    'uses' => 'BookController@editBook'
 ]);
 
 $router->get('/deletebook/{id}', [
     'as' => 'books',
     'uses' => 'BookController@deleteBook'
+]);
+
+$router->post('/savebook', [
+    'as' => 'books',
+    'uses' => 'BookController@save'
 ]);

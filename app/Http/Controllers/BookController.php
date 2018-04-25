@@ -19,6 +19,7 @@ class BookController extends Controller
 
     public function save(Request $request)
     {
+        $id = $request->input('id');
         $title = $request->input('titulo');
         $authorId = $request->input('autorid');
 
@@ -27,12 +28,31 @@ class BookController extends Controller
             "authorId" => $authorId
         );
 
-        $this->callAPI('POST',
-            '/books/',
-            $data
-        );
+
+        if($id) {
+            $this->callAPI('PUT',
+                '/books/' . $id,
+                $data
+            );
+        } else {
+            $this->callAPI('POST',
+                '/books/',
+                $data
+            );
+        }
 
         return redirect('/authors/1');
+    }
+
+    public function editBook($id)
+    {
+        $book = $this->callAPI('GET', '/books/' . $id);
+
+        return View::make('book/edit')->with(
+            [
+                'book' => $book
+            ]
+        );
     }
 
     public function deleteBook($id)
