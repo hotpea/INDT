@@ -57,3 +57,8 @@ $router->post('/savebook', [
     'as' => 'books',
     'uses' => 'BookController@save'
 ]);
+
+$router->get('/deletebook/{id}', [
+    'as' => 'books',
+    'uses' => 'BookController@deleteBook'
+]);

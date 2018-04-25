@@ -35,4 +35,11 @@ class BookController extends Controller
         return redirect('/authors/1');
     }
 
+    public function deleteBook($id)
+    {
+        $this->callAPI('DELETE', '/books/' . $id);
+
+        return redirect('/authors/1');
+    }
+
 }

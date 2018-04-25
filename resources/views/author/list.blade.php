@@ -21,7 +21,7 @@
                     <th scope="row">{{ $author['id'] }}</th>
                     <td>{{ $author['firstName'] }}</td>
                     <td>{{ $author['lastName'] }}</td>
-                    <td>
+                    <td class="pull-right">
                         <a class="btn btn-primary" data-toggle="collapse" href="#collapse{{ $author['id'] }}" role="button" aria-expanded="false" aria-controls="collapse">
                             Livros
                         </a>
@@ -44,6 +44,14 @@
                                             <tr>
                                                 <th scope="row">{{ $book['id'] }}</th>
                                                 <td>{{ $book['title'] }}</td>
+                                                <td class="pull-right">
+                                                    <a class="btn btn-default" href="/editbook/{{ $book['id'] }}">
+                                                        Editar livro
+                                                    </a>
+                                                    <a class="btn btn-danger" href="/deletebook/{{ $book['id'] }}">
+                                                        Excluir livro
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @else
