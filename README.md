@@ -1,9 +1,9 @@
-* Requisitos:
+Requisitos:
 - PHP >= 7.1.3
 - OpenSSL PHP Extension
 - Mbstring PHP Extension
 
-* Passo a Passo
+Passo a Passo
 
 Instale o composer
 
