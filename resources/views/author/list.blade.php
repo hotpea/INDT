@@ -1,11 +1,18 @@
 @extends('index')
 
 @section('content')
-    <div class="pull-right">
-        <a class="btn btn-default" href="/addauthor">
-            Novo Autor
-        </a>
-    </div>
+    <a class="btn btn-default" href="/addauthor">
+        Novo Autor
+    </a>
+
+    {{--TODO: implementar busca com JQuery--}}
+    {{--<div class="pull-right">--}}
+        {{--<form class="form-inline" action="/searchauthors" method="post">--}}
+            {{--<input type="text" name="pesquisar" class="form-control" placeholder="Nome">--}}
+            {{--<button type="submit" class="btn btn-primary mb-2">Pesquisar</button>--}}
+        {{--</form>--}}
+    {{--</div>--}}
+
     <table class="table">
         <thead class="thead-dark">
             <tr>

@@ -41,7 +41,7 @@ class BookController extends Controller
             );
         }
 
-        return redirect('/authors/1');
+        return redirect('/');
     }
 
     public function editBook($id)
@@ -59,7 +59,7 @@ class BookController extends Controller
     {
         $this->callAPI('DELETE', '/books/' . $id);
 
-        return redirect('/authors/1');
+        return redirect('/');
     }
 
 }

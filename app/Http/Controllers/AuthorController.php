@@ -12,7 +12,7 @@ class AuthorController extends Controller
         //
     }
 
-    public function getAllAuthors($page = null)
+    public function getAllAuthors($page = 1)
     {
         $limit = 5;
         $offset = ($page - 1) * $limit;
@@ -57,7 +57,7 @@ class AuthorController extends Controller
             );
         }
 
-        return redirect('/authors/1');
+        return redirect('/');
     }
 
     public function editAuthor($id)
@@ -75,7 +75,7 @@ class AuthorController extends Controller
     {
         $this->callAPI('DELETE', '/authors/' . $id);
 
-        return redirect('/authors/1');
+        return redirect('/');
     }
 
 }

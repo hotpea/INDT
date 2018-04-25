@@ -11,9 +11,10 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return view('index', ['name' => 'Jack']);
-});
+$router->get('/', [
+    'as' => 'authors',
+    'uses' => 'AuthorController@getAllAuthors'
+]);
 
 // Author
 $router->get('/authors/{page}', [
