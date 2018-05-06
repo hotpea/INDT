@@ -30,6 +30,8 @@ Rode o seguinte comando na raiz do projeto
 composer install
 ```
 
+Faça uma cópia do arquivo .env.example e renomeie para .env e, se necessário, altere seus valores para variaveis referentes ao seu ambiente, provavelmente não será necessário.
+
 Para iniciar o projeto basta rodar o comando abaixo na raiz do projeto.
 PS: 8000 é a porta onde ele rodará, pode ser alterada para qualquer valor disponível
 
